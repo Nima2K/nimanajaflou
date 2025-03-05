@@ -1,0 +1,78 @@
+.portfolio-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: black;
+  color: greenyellow;
+  font-family: 'Courier New', Courier, monospace;
+  flex-direction: column;
+  text-align: center;
+}
+
+.typed-text {
+  font-size: 2em;
+  margin-bottom: 20px;
+  transition: all 0.5s ease;
+  display: inline; /* Changes the container to inline to keep text and cursor together */
+  white-space: nowrap; /* Prevents the text and cursor from wrapping */
+}
+
+.typed-cursor {
+  font-size: 2em;
+  display: inline; /* Ensures the cursor appears inline with the text */
+  position: relative; /* Positions the cursor relative to the typed text */
+}
+
+.shareline {
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.shareline-content {
+  position: relative;
+  width: 50%;
+  position: relative;
+  display: inline;
+}
+
+
+.profile-picture {
+  width: 300px;  /* Explicit width */
+  height: 300px; /* Explicit height */
+  overflow: hidden; /* Keeps the image within the boundaries */
+}
+
+/* Specific styling for the img tag within .profile-picture */
+.profile-picture img {
+  width: 100%; /* Ensure the img tag fills the width of the container */
+  height: 100%; /* Ensure the img tag fills the height of the container */
+  object-fit: cover; /* Resize the image to cover the area, may crop */
+  display: block; /* Remove default inline-block spacing */
+}
+
+@keyframes scaleUp {
+  to {
+      transform: scale(1);
+  }
+}
+
+.scroll-prompt {
+  opacity: 0;
+  margin: auto;
+  transition: opacity 1s ease;
+  animation: fadeIn 2s forwards 2s; /* Delay the fade-in to sync with other animations */
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
