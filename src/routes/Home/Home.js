@@ -1,56 +1,38 @@
 import React, { useState } from "react";
 import "./Home.css";
-import Introduction from "./Introduction"; // Ensure Introduction is imported
-
-const Bio = () => (
-  <p>
-    Dynamic Full Stack Developer specializing in transforming ideas into
-    seamless web applications using ReactJS, NodeJS, and Python. Notable
-    achievements include delivering optimized user experiences and eﬃciently
-    tackling complex projects. Holds a B.S. in Computer Engineering from Tabriz
-    University and completed a Software Engineering Bootcamp through
-    Springboard. Committed to continuous learning and leveraging cutting-edge
-    technologies to drive innovative solutions.
-  </p>
-);
-
-const ProfilePicture = () => (
-  <div className="profile-picture">
-    <img src="./pfp.jpg" alt="Nima Najaflou" />
-  </div>
-);
+import Introduction from "./Introduction";
+import Bio from "../../components/Bio";
+import ProfilePicture from "../../components/ProfilePicture";
+import Terminal from "../../components/Terminal/Terminal";
 
 function Home() {
   const [showContent, setShowContent] = useState(false);
 
-  return (
-    <>
-      <div
-        className="portfolio-container"
-        onScroll={() => setShowContent(true)}
-      >
-        {showContent ? (
-          <>
-            <div className="typed-text">
-              {" "}
-              {"> console.log(<NimaNajaflou />);"}
-            </div>
-            <div className="shareline">
-              <Bio className="shareline-content" />
-              <ProfilePicture className="shareline-content" />
-            </div>
+  const handleIntroductionComplete = () => {
+    setTimeout(() => {
+      setShowContent(true);
+    }, 1000);
+  };
 
-            <div className="scroll-prompt">v Scroll Down v</div>
-          </>
-        ) : (
-          <Introduction
-            onCompleted={() => {
-              setTimeout(() => setShowContent(true), 1000);
-            }}
-          />
-        )}
+  // Initial command to show the bio and profile picture
+  const initialCommand = {
+    command: "> console.log(<NimaNajaflou />);",
+    response: (
+      <div className="shareline">
+        <Bio className="bio-text" />
+        <ProfilePicture className="profile-picture" />
       </div>
-    </>
+    ),
+  };
+
+  return (
+    <div className="portfolio-container">
+      {!showContent ? (
+        <Introduction onCompleted={handleIntroductionComplete} />
+      ) : (
+        <Terminal initialCommand={initialCommand} />
+      )}
+    </div>
   );
 }
 

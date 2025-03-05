@@ -4,7 +4,7 @@ import Typed from "typed.js";
 const Introduction = ({ onCompleted }) => {
   const el = useRef(null);
   const typed = useRef(null);
-  const str = `Najaflou />`;
+
   useEffect(() => {
     const options = {
       strings: [
@@ -16,10 +16,10 @@ const Introduction = ({ onCompleted }) => {
       backDelay: 1100,
       startDelay: 500,
       showCursor: true,
-      cursorChar: "|",
-      smartBackspace: false, // Prevent smart backspacing
+      cursorChar: "_",
+      smartBackspace: false,
       onComplete: onCompleted,
-      loop: false, // Make sure it does not loop
+      loop: false,
       contentType: "html",
     };
 
@@ -31,18 +31,10 @@ const Introduction = ({ onCompleted }) => {
   }, [onCompleted]);
 
   return (
-    <span>
-      {" "}
-      {/* Changed div to span to ensure inline nature */}
-      <span className="typed-text" style={{ display: "inline-block" }}>
-        {"> "}
-      </span>
-      <span
-        className="typed-text"
-        style={{ display: "inline-block" }}
-        ref={el}
-      ></span>
-    </span>
+    <div className="cmd-line">
+      <span className="prompt">&gt; </span>
+      <span className="typed-text" ref={el}></span>
+    </div>
   );
 };
 

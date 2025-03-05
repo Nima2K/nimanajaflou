@@ -1,78 +1,133 @@
+body {
+  background-color: black;
+  color: greenyellow;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+}
+
 .portfolio-container {
   height: 100vh;
   width: 100%;
   display: flex;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding: 50px;
+  box-sizing: border-box;
   justify-content: flex-start;
   align-items: flex-start;
   background-color: black;
   color: greenyellow;
   font-family: 'Courier New', Courier, monospace;
   flex-direction: column;
-  text-align: center;
+  overflow-y: auto;
 }
 
 .typed-text {
-  font-size: 2em;
-  margin-bottom: 20px;
-  transition: all 0.5s ease;
-  display: inline; /* Changes the container to inline to keep text and cursor together */
-  white-space: nowrap; /* Prevents the text and cursor from wrapping */
+  color: greenyellow;
+  white-space: nowrap;
 }
 
 .typed-cursor {
-  font-size: 2em;
-  display: inline; /* Ensures the cursor appears inline with the text */
-  position: relative; /* Positions the cursor relative to the typed text */
+  color: greenyellow;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .shareline {
-  width: 10rem;
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bio-text {
+  flex: 2;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.profile-picture {
+  flex: 1;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  position: relative;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-}
-.shareline-content {
-  position: relative;
-  width: 50%;
-  position: relative;
-  display: inline;
+  overflow: hidden;
 }
 
-
-.profile-picture {
-  width: 300px;  /* Explicit width */
-  height: 300px; /* Explicit height */
-  overflow: hidden; /* Keeps the image within the boundaries */
-}
-
-/* Specific styling for the img tag within .profile-picture */
 .profile-picture img {
-  width: 100%; /* Ensure the img tag fills the width of the container */
-  height: 100%; /* Ensure the img tag fills the height of the container */
-  object-fit: cover; /* Resize the image to cover the area, may crop */
-  display: block; /* Remove default inline-block spacing */
-}
-
-@keyframes scaleUp {
-  to {
-      transform: scale(1);
-  }
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .scroll-prompt {
-  opacity: 0;
-  margin: auto;
-  transition: opacity 1s ease;
-  animation: fadeIn 2s forwards 2s; /* Delay the fade-in to sync with other animations */
+  margin-top: 20px;
+  color: greenyellow;
+  animation: fadeIn 2s forwards;
 }
 
 @keyframes fadeIn {
-  to {
-      opacity: 1;
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .portfolio-container {
+    padding: 20px;
+  }
+  
+  .shareline {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .bio-text {
+    width: 100%;
+    order: 2;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    order: 1;
+    margin-bottom: 1rem;
+  }
+  
+  .typed-text {
+    font-size: 0.9em;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .portfolio-container {
+    padding: 15px;
+  }
+  
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .bio-text {
+    font-size: 0.8em;
   }
 }

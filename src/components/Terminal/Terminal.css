@@ -1,0 +1,80 @@
+.terminal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cmd-line {
+    font-size: 1.2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .prompt {
+    color: greenyellow;
+    margin-right: 10px;
+  }
+  
+  .command-response {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .command-input-container {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .command-input {
+    background: transparent;
+    border: none;
+    color: greenyellow;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    outline: none;
+    width: 100%;
+  }
+  
+  .command-suggestions {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    top: 100%;
+  }
+  
+  .suggestion-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: greenyellow;
+    transition: background-color 0.2s ease;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #2c2c2c;
+  }
+  
+  .suggestion-item.active {
+    background-color: #3c3c3c;
+    border-left: 3px solid greenyellow;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .cmd-line {
+      font-size: 1em;
+    }
+    
+    .command-input {
+      font-size: 1em;
+    }
+    
+    .suggestion-item {
+      padding: 8px 10px;
+    }
+  }
